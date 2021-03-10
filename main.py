@@ -1,63 +1,13 @@
 # -*- coding: utf-8 -*-
 
-import RPi.GPIO as GPIO
-from RPLCD import CharLCD
+import time
+
 import train_update
 import weather_update
 import bus_update2
-import time, sched
 import schedule
 import data
-import sys
-import datetime
 import display_function
-
-GPIO.setmode(GPIO.BCM)
-
-GPIO.setup(24, GPIO.OUT)
-GPIO.setup(17, GPIO.OUT)
-GPIO.setup(10, GPIO.OUT)
-GPIO.setup(27, GPIO.OUT)
-GPIO.setup(25, GPIO.OUT)
-GPIO.setup(23, GPIO.OUT)
-GPIO.setup(22, GPIO.OUT)
-
-GPIO_PIN_RS = 25
-GPIO_PIN_RW = None
-GPIO_PIN_E1 = 24
-GPIO_PIN_E2 = 10
-GPIO_PIN_DB4 = 22
-GPIO_PIN_DB5 = 23
-GPIO_PIN_DB6 = 27
-GPIO_PIN_DB7 = 17
-LCD_COLUMNS = 40
-LCD_ROWS = 2
-LCD_DOT_SIZE = 8
-LCD_BRIGHTNESS = 0
-
-lcd_top = CharLCD(pin_rs = GPIO_PIN_RS,
-                  pin_rw = GPIO_PIN_RW,
-                  pin_e = GPIO_PIN_E1,
-                  pins_data = [GPIO_PIN_DB4,
-                               GPIO_PIN_DB5,
-                               GPIO_PIN_DB6,
-                               GPIO_PIN_DB7],
-                  numbering_mode = GPIO.BCM,
-                  cols = LCD_COLUMNS,
-                  rows = LCD_ROWS,
-                  dotsize = LCD_DOT_SIZE)
-
-lcd_bot = CharLCD(pin_rs = GPIO_PIN_RS,
-                  pin_rw = GPIO_PIN_RW,
-                  pin_e = GPIO_PIN_E2,
-                  pins_data = [GPIO_PIN_DB4,
-                               GPIO_PIN_DB5,
-                               GPIO_PIN_DB6,
-                               GPIO_PIN_DB7],
-                  numbering_mode = GPIO.BCM,
-                  cols = LCD_COLUMNS,
-                  rows = LCD_ROWS,
-                  dotsize = LCD_DOT_SIZE)
 
 def get_date_and_time():
     '''
