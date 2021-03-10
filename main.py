@@ -17,18 +17,18 @@ def get_date_and_time():
     global date_str, time_str
     
     dayname = time.strftime("%A, ")
-    month = time.strftime("%B ")
+    month = time.strftime("%B")
     daynum = time.strftime("%d")
     
     j = int(daynum)%10
     k = int(daynum)%100
     if j == 1 and k != 11:
-        suffix = 'st'
+        suffix = 'st '
     elif j == 2 and k != 12:
-        suffix = 'nd'
+        suffix = 'nd '
     elif j == 3 and k != 13:
-        suffix = 'rd'
-    else: suffix = 'th'
+        suffix = 'rd '
+    else: suffix = 'th '
     
     time_str = time.strftime("%H:%M")
     date_str = dayname + daynum + suffix + month
